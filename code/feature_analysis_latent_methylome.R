@@ -24,40 +24,4 @@ BRCA.covs = data.frame(fread(BRCA.covFile), row.names=1)
 
 full.data = merge(vae_features, BRCA.covs, by='Basename')
 
-
-### Heatmap ###
-require(heatmap3)
-heatmap3(vae_features)
-
-
-### LASSO Regression ### 
-temp.data = full.data[,2:14 ]
-temp.data = temp.data[, -which(colnames(temp.data) %in% c("X_SAMPLE_ID", "X"))]
-temp.data = temp.data[!is.na(temp.data$PAM50.RNAseq), ]
-temp.data = temp.data[temp.data$PAM50.RNAseq != '', ]
-colnames(temp.data) = c( "one", "two", "three", "four", "five",  
-                         "six", "seven", "eight", "nine", "ten",
-                         "PAM50.RNAseq", "randu")
-
-x <- as.matrix(model.matrix(PAM50.RNAseq~., temp.data)[,-1])
-y <- temp.data$PAM50.RNAseq
-lambda <- 10^seq(10, -2, length = 100)
-
-set.seed(489)
-train = sample(1:nrow(x), nrow(x)/2)
-test = (-train)
-ytest = y[test]
-
-lasso.mod <- cv.glmnet(x[train,], y[train], family='multinomial', alpha=1, standardize=TRUE)
-plot(lasso.mod)
-plot(lasso.mod$glmnet.fit, xvar="lambda", label=TRUE)
-lasso.mod$lambda.min
-lasso.mod$lambda.1se
-coeffic = coef(lasso.mod, s=lasso.mod$lambda.min)
-
-lasso.pred <- predict(lasso.mod, newx = x[test,])
-
-clusters = kmeans(lasso.pred, 5, nstart = 20)
-clusters
-
-clusters$cluster <- as.factor(clusters$cluster)
+### Modeling ### 
