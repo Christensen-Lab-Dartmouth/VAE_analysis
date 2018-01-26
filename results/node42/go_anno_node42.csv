@@ -1,0 +1,11 @@
+"","Term","Ont","N","DE","P.DE","FDR"
+"GO:0000075","cell cycle checkpoint","BP",215,4,0.000130136699821602,1
+"GO:0009411","response to UV","BP",118,3,0.000417201589004745,1
+"GO:0000077","DNA damage checkpoint","BP",146,3,0.000680964453673313,1
+"GO:0031570","DNA integrity checkpoint","BP",156,3,0.000790524133044771,1
+"GO:0003684","damaged DNA binding","MF",58,2,0.00134017502811289,1
+"GO:0034736","cholesterol O-acyltransferase activity","MF",2,1,0.00159181898738306,1
+"GO:0004772","sterol O-acyltransferase activity","MF",2,1,0.00159181898738306,1
+"GO:0042986","positive regulation of amyloid precursor protein biosynthetic process","BP",2,1,0.00167963261614603,1
+"GO:1902589","single-organism organelle organization","BP",1551,8,0.00204496239291062,1
+"GO:0097610","cell surface furrow","CC",43,2,0.00226405825171756,1

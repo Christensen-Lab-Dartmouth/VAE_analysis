@@ -131,9 +131,11 @@ pThreshold <- 0.001
 pComp <- as.data.frame(matrix(nrow = 3,ncol = 3))
 
 #### Plot Results
+#install.packages('ggrepel')
+library(ggrepel)
 BRCA <- ggplot(results, aes(as.numeric(paste(results[ ,3])), 
                                       -log10(as.numeric(paste(results[ ,1]))))) + 
-     geom_point(colour = '#989898', fill = '#C7BBC9', pch = 21, size = 9) + 
+     geom_point(colour = '#989898', fill = '#C7BBC9', pch = 21, size = 25) + 
      scale_color_gradient2(low = "blue", mid="grey", high = "red") +   
      labs(list(x = "Beta Coefficient", 
                y = "-log10 p Value", 
@@ -141,33 +143,50 @@ BRCA <- ggplot(results, aes(as.numeric(paste(results[ ,3])),
      geom_hline(yintercept = qcut1, color = "red", linetype = "dashed", size = 1.8) + 
      geom_hline(yintercept = qcut2, color = "black", linetype = "dashed", size = 1.8) +
      overall_theme +
-     geom_text(aes(label=rownames(results)), hjust=0, vjust=0)
+     geom_text_repel(aes(label=rownames(results)), size=12)
 
 
 
-png('VAE_LaWAS.png',width = 2400,height = 5400)
+png('VAE_LaWAS.png',width = 1600, height = 2400)
 BRCA
 dev.off()
 
 
+#####################
+# VAE correlation chord diagram
+#####################
+     # http://zuguang.de/circlize_book/book/the-chorddiagram-function.html
 
-#install.packages('dplyr') # Only have to run once.
-library(dplyr)
-library(reshape2)
-correlations = cor(vae_mat)
-d_cor_melt <- arrange(melt(correlations), -abs(value))
-d_cor_melt = data.frame(d_cor_melt)
-cor.sub = d_cor_melt[d_cor_melt$value > 0.8 &
-                          d_cor_melt$value < 1, ]
-
-
-chordDiagram(cor.sub, 
-             transparency = 0.4,
-             order = as.character(seq(1:100)))
-circos.clear()
-
-#install.packages('chorddiag')
-library(chorddiag)
+     #install.packages('dplyr') # Only have to run once.
+     library(dplyr)
+     library(reshape2)
+     correlations = cor(vae_mat)
+     d_cor_melt <- arrange(melt(correlations), -abs(value))
+     d_cor_melt = data.frame(d_cor_melt)
+     
+     d_cor_melt$Var1 = as.character(d_cor_melt$Var1)
+     d_cor_melt$Var2 = as.character(d_cor_melt$Var2)
+     
+     cor.sub = d_cor_melt[(d_cor_melt$value > 0.85 | d_cor_melt$value < -0.85) &
+                          (d_cor_melt$value < 1 & d_cor_melt$value > -1), ]
+     
+     
+     #png('VAE_ChordPlot.png', width = 2000, height = 2000, res = 300)
+     
+     col_fun = colorRamp2(range(cor.sub$value), c("yellow", "blue"), 
+                          transparency = 0.5)
+     
+     chordDiagram(cor.sub, 
+                  transparency = 0.4,
+                  order = as.character(seq(1:100)),
+                  col = col_fun,
+                  link.sort = TRUE, link.decreasing = TRUE,
+                  annotationTrack = c('name', "grid"))
+     
+     title("Correlations between VAE nodes", cex = 0.8)
+     
+     circos.clear()
+     dev.off()
 
 
 

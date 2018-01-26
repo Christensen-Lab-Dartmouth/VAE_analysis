@@ -1,0 +1,11 @@
+"","Term","Ont","N","DE","P.DE","FDR"
+"GO:0097610","cell surface furrow","CC",43,3,0.000226938612603138,1
+"GO:0032154","cleavage furrow","CC",43,3,0.000226938612603138,1
+"GO:0032153","cell division site","CC",52,3,0.000430667895103501,1
+"GO:0032155","cell division site part","CC",52,3,0.000430667895103501,1
+"GO:0038184","cell surface bile acid receptor signaling pathway","BP",1,1,0.000685751499898344,1
+"GO:0038182","G-protein coupled bile acid receptor activity","MF",1,1,0.000685751499898344,1
+"GO:0051129","negative regulation of cellular component organization","BP",541,7,0.00147904864617085,1
+"GO:1990498","mitotic spindle microtubule","CC",1,1,0.00186078828043087,1
+"GO:0044424","intracellular part","CC",12588,40,0.00191596460800495,1
+"GO:0070412","R-SMAD binding","MF",21,2,0.00270648779820047,1

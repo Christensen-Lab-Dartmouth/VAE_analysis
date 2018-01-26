@@ -1,0 +1,11 @@
+"","Term","Ont","N","DE","P.DE","FDR"
+"GO:0051129","negative regulation of cellular component organization","BP",541,8,3.1208698339464e-05,0.654446404178561
+"GO:0010977","negative regulation of neuron projection development","BP",115,4,0.000417250322914574,1
+"GO:0031345","negative regulation of cell projection organization","BP",134,4,0.00062108705729671,1
+"GO:0044424","intracellular part","CC",12588,32,0.000757704740420954,1
+"GO:1901255","nucleotide-excision repair involved in interstrand cross-link repair","BP",2,1,0.000960807700493466,1
+"GO:0009411","response to UV","BP",118,3,0.00121015179194107,1
+"GO:1990498","mitotic spindle microtubule","CC",1,1,0.00142029015337391,1
+"GO:1990391","DNA repair complex","CC",38,2,0.00142818387307189,1
+"GO:0005622","intracellular","CC",12889,32,0.00174574002260071,1
+"GO:0000110","nucleotide-excision repair factor 1 complex","CC",3,1,0.0020633626233706,1
