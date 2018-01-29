@@ -17,9 +17,9 @@ setwd(dir)
 
 # Load all the data and make variables
 ### Load our data to work with ###
-vae.file = '../results/encoded_methyl_onehidden_warmup_batchnorm_300K-100.tsv'
+vae.file = 'encoded_methyl_onehidden_warmup_batchnorm_300K-100.tsv'
 BRCA.covFile = '../BRCAtarget_covariates.csv'
-tSNE.file = '../results/vae_tsne_out_300K-100_3d.tsv'
+tSNE.file = '../results/tSNE/vae_tsne_out_300K-100_3d.tsv'
 
 tSNE_features = data.frame(fread(tSNE.file), row.names=1)
 colnames(tSNE_features) = tSNE_features[1, ]
@@ -89,6 +89,19 @@ summary(q.values)
 
 
 #### Generate the theme of each ggplot ####
+results$negLog10P = -log(results$pvalues)
+results$Nodes = rownames(results)
+
+png('Nodes_LaEWAS.png', width = 2000, height = 2000, res = 300)
+
+ggscatter(results, x = "beta", y = "negLog10P",
+              color = "black", 
+              xlab = 'Beta', 
+              ylab = '-log10(P-value)',
+              label = 'Nodes')
+
+dev.off()
+
 library(ggplot2)
 overall_theme <-  theme(panel.grid.major = element_blank(), 
                         panel.grid.minor = element_blank(), 
@@ -192,3 +205,4 @@ dev.off()
 
 
 
+     

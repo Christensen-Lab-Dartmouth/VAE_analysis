@@ -1,11 +1,11 @@
 "","Term","Ont","N","DE","P.DE","FDR"
-"GO:0051129","negative regulation of cellular component organization","BP",541,8,3.1208698339464e-05,0.654446404178561
-"GO:0010977","negative regulation of neuron projection development","BP",115,4,0.000417250322914574,1
-"GO:0031345","negative regulation of cell projection organization","BP",134,4,0.00062108705729671,1
-"GO:0044424","intracellular part","CC",12588,32,0.000757704740420954,1
-"GO:1901255","nucleotide-excision repair involved in interstrand cross-link repair","BP",2,1,0.000960807700493466,1
-"GO:0009411","response to UV","BP",118,3,0.00121015179194107,1
-"GO:1990498","mitotic spindle microtubule","CC",1,1,0.00142029015337391,1
-"GO:1990391","DNA repair complex","CC",38,2,0.00142818387307189,1
-"GO:0005622","intracellular","CC",12889,32,0.00174574002260071,1
-"GO:0000110","nucleotide-excision repair factor 1 complex","CC",3,1,0.0020633626233706,1
+"GO:0006357","regulation of transcription from RNA polymerase II promoter","BP",1675,284,4.01939016337373e-07,0.00452526536225678
+"GO:0043565","sequence-specific DNA binding","MF",984,188,4.31594216715001e-07,0.00452526536225678
+"GO:0001067","regulatory region nucleic acid binding","MF",784,155,6.51743519460437e-07,0.00455568720102846
+"GO:0000975","regulatory region DNA binding","MF",783,154,1.48086629371055e-06,0.00776344154477755
+"GO:0044212","transcription regulatory region DNA binding","MF",780,153,2.26227124855255e-06,0.0094879656164294
+"GO:0006366","transcription from RNA polymerase II promoter","BP",1855,296,7.15393546367278e-06,0.0250030044455364
+"GO:0003690","double-stranded DNA binding","MF",735,137,1.72028079186594e-05,0.0515346974363267
+"GO:0045944","positive regulation of transcription from RNA polymerase II promoter","BP",968,175,3.1673219732294e-05,0.0706783864921851
+"GO:0000981","RNA polymerase II transcription factor activity, sequence-specific DNA binding","MF",610,127,3.46676787646075e-05,0.0706783864921851
+"GO:0030029","actin filament-based process","BP",612,123,3.7734174084302e-05,0.0706783864921851
