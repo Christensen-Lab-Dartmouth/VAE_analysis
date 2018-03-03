@@ -1,0 +1,31 @@
+"","Term","Ont","N","DE","P.DE","FDR"
+"GO:0005515","protein binding","MF",8314,479,3.68101634600616e-05,0.771909127757491
+"GO:0045184","establishment of protein localization","BP",1861,124,0.000228255717547772,1
+"GO:0022011","myelination in peripheral nervous system","BP",22,7,0.000287634463675769,1
+"GO:0032292","peripheral nervous system axon ensheathment","BP",22,7,0.000287634463675769,1
+"GO:0019003","GDP binding","MF",48,8,0.00036810470591959,1
+"GO:0014044","Schwann cell development","BP",24,7,0.0004756374421066,1
+"GO:0005089","Rho guanyl-nucleotide exchange factor activity","MF",67,14,0.000575452114518834,1
+"GO:0008104","protein localization","BP",2262,147,0.000651939774098928,1
+"GO:0043473","pigmentation","BP",87,13,0.000688345040234694,1
+"GO:0002581","negative regulation of antigen processing and presentation of peptide or polysaccharide antigen via MHC class II","BP",3,3,0.000720112627496317,1
+"GO:0005856","cytoskeleton","CC",1905,128,0.000841976348329376,1
+"GO:0016192","vesicle-mediated transport","BP",1314,94,0.00126341721393764,1
+"GO:0010927","cellular component assembly involved in morphogenesis","BP",290,28,0.00128346154092399,1
+"GO:2001237","negative regulation of extrinsic apoptotic signaling pathway","BP",99,14,0.00164789313901481,1
+"GO:0097542","ciliary tip","CC",44,7,0.00179558505450763,1
+"GO:0044272","sulfur compound biosynthetic process","BP",191,20,0.00189854199672396,1
+"GO:0015031","protein transport","BP",1709,108,0.00207892395242297,1
+"GO:0014037","Schwann cell differentiation","BP",31,7,0.00210448054514645,1
+"GO:0038094","Fc-gamma receptor signaling pathway","BP",73,11,0.00234773375172731,1
+"GO:0006790","sulfur compound metabolic process","BP",337,29,0.00247375397524303,1
+"GO:2001236","regulation of extrinsic apoptotic signaling pathway","BP",150,18,0.00252288452917675,1
+"GO:1902105","regulation of leukocyte differentiation","BP",219,23,0.00264178702539291,1
+"GO:0044430","cytoskeletal part","CC",1420,93,0.00272988669388569,1
+"GO:0030427","site of polarized growth","CC",131,18,0.00279408588006868,1
+"GO:0002682","regulation of immune system process","BP",1188,81,0.00280004173026557,1
+"GO:0033036","macromolecule localization","BP",2615,161,0.00284952801057299,1
+"GO:0072386","plus-end-directed organelle transport along microtubule","BP",7,3,0.00289659955308514,1
+"GO:0072383","plus-end-directed vesicle transport along microtubule","BP",7,3,0.00289659955308514,1
+"GO:1902262","apoptotic process involved in patterning of blood vessels","BP",5,3,0.00312276404552775,1
+"GO:0007264","small GTPase mediated signal transduction","BP",519,46,0.00322021986853577,1

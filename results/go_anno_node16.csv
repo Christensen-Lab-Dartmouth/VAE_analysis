@@ -1,0 +1,31 @@
+"","Term","Ont","N","DE","P.DE","FDR"
+"GO:0010927","cellular component assembly involved in morphogenesis","BP",290,32,4.848417276346e-05,1
+"GO:0005515","protein binding","MF",8314,472,0.000181124449019463,1
+"GO:0015629","actin cytoskeleton","CC",430,45,0.000263180948966005,1
+"GO:0006572","tyrosine catabolic process","BP",5,3,0.000431009342600774,1
+"GO:0032555","purine ribonucleotide binding","MF",1734,119,0.000540418892965233,1
+"GO:0017076","purine nucleotide binding","MF",1746,119,0.000632538756088515,1
+"GO:0032550","purine ribonucleoside binding","MF",1702,116,0.000665194589785939,1
+"GO:0032549","ribonucleoside binding","MF",1705,116,0.000695148945286409,1
+"GO:0001883","purine nucleoside binding","MF",1705,116,0.000697981280023535,1
+"GO:0005856","cytoskeleton","CC",1905,128,0.000730268048960319,1
+"GO:0032553","ribonucleotide binding","MF",1750,119,0.000735403293324627,1
+"GO:0001882","nucleoside binding","MF",1711,116,0.000760086822709814,1
+"GO:0035639","purine ribonucleoside triphosphate binding","MF",1693,115,0.000776671792326541,1
+"GO:0044430","cytoskeletal part","CC",1420,96,0.000818804604076395,1
+"GO:0010715","regulation of extracellular matrix disassembly","BP",15,6,0.000831033432691779,1
+"GO:0016578","histone deubiquitination","BP",19,5,0.00118906627272553,1
+"GO:1902589","single-organism organelle organization","BP",1551,107,0.00127630793149977,1
+"GO:0090091","positive regulation of extracellular matrix disassembly","BP",7,4,0.00141923342212175,1
+"GO:0043292","contractile fiber","CC",208,24,0.00164313640006594,1
+"GO:0017042","glycosylceramidase activity","MF",2,2,0.00172752574711271,1
+"GO:0009074","aromatic amino acid family catabolic process","BP",15,4,0.00179299122609244,1
+"GO:0030016","myofibril","CC",197,23,0.002046150529436,1
+"GO:0030036","actin cytoskeleton organization","BP",529,49,0.0024387323793039,1
+"GO:0016462","pyrophosphatase activity","MF",754,52,0.00279938968466553,1
+"GO:0016818","hydrolase activity, acting on acid anhydrides, in phosphorus-containing anhydrides","MF",756,52,0.00293152204659718,1
+"GO:0006570","tyrosine metabolic process","BP",8,3,0.00295203314761643,1
+"GO:0016817","hydrolase activity, acting on acid anhydrides","MF",757,52,0.00301486808252335,1
+"GO:0004702","receptor signaling protein serine/threonine kinase activity","MF",86,12,0.00302479459268045,1
+"GO:0044449","contractile fiber part","CC",191,22,0.00309356203301586,1
+"GO:1901611","phosphatidylglycerol binding","MF",7,3,0.00320618518802844,1

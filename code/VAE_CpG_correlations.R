@@ -56,255 +56,327 @@
 #####################
 # Correlations
 #####################  
-     node = 1
-     vaeNode = vae[, as.character(node)]
+     nodes = c(1, 13, 16, 40, 42, 56, 58, 86, 93)
      
-     cor.func = function(x){return(cor(x, vaeNode))}
-     betas = t(betas)
+     node_corrs = function(node, betas, vae) {
+          vaeNode = vae[, as.character(node)]
+          
+          cor.func = function(x){return(cor(x, vaeNode))}
+          
+          correlations = apply(betas, 2, cor.func)
+          correlations = data.frame(correlations)
+          correlations = cbind('CpG' = rownames(correlations), correlations)
+          
+          nodeLabel = paste('VAE', node, sep = '')
+          correlations = cbind(nodeLabel = rep(nodeLabel, nrow(correlations)), correlations)
+          results = correlations[order(abs(correlations$correlations), decreasing=T), ]
+          
+          return(results)
+     }
+
+     subset_cors = function(threshold, correlations){
+          cor.sub = correlations[(correlations$correlations >= threshold | 
+                                       correlations$correlations < -1*threshold), ]
+          return(cor.sub)
+     }
      
-     correlations = apply(betas, 2, cor.func)
-     correlations = data.frame(correlations)
-     correlations = cbind('CpG' = rownames(correlations), correlations)
+     threshold = 0.3
      
-     nodeLabel = paste('VAE', node, sep = '')
-     correlations = cbind(nodeLabel = rep(nodeLabel, nrow(correlations)), correlations)
+     correlations1 = node_corrs(1, betas, vae)
+     correlations1 = subset_cors(threshold, correlations1)
      
-     #correlations40 = correlations[order(abs(correlations$correlations), decreasing=T), ]
-     #correlations42 = correlations[order(abs(correlations$correlations), decreasing=T), ]
-     #correlations93 = correlations[order(abs(correlations$correlations), decreasing=T), ]
-     #correlations1 = correlations[order(abs(correlations$correlations), decreasing=T), ]
+     correlations3 = node_corrs(3, betas, vae)
+     correlations3 = subset_cors(threshold, correlations3)
      
-     betas = t(betas)     
+     correlations13 = node_corrs(13, betas, vae)
+     correlations13 = subset_cors(threshold, correlations13)
+     
+     correlations16 = node_corrs(16, betas, vae)
+     correlations16 = subset_cors(threshold, correlations16)
+     
+     correlations40 = node_corrs(40, betas, vae)
+     correlations40 = subset_cors(threshold, correlations40)
+     
+     correlations42 = node_corrs(42, betas, vae)
+     correlations42 = subset_cors(threshold, correlations42)
+     
+     correlations56 = node_corrs(56, betas, vae)
+     correlations56 = subset_cors(threshold, correlations56)
+     
+     correlations58 = node_corrs(58, betas, vae)
+     correlations58 = subset_cors(threshold, correlations58)
+     
+     correlations86 = node_corrs(86, betas, vae)
+     correlations86 = subset_cors(threshold, correlations86)
+     
+     correlations93 = node_corrs(93, betas, vae)
+     correlations93 = subset_cors(threshold, correlations93)
      
      
 #####################
 # Correlation diagram
 ##################### 
-     ## Correlation elbow
-     cors = correlations40$correlations
-     file.name = paste('correlation_elbow_node40', '.png', sep = '')
-     png(file.name, width = 1000, height = 1000, res = 100)
-     plot(abs(cors), main=paste('Node ', node, sep = ''), ylab = '|Correlation|', xlab='Index')
-     dev.off()
+     plot_corr_elbow = function(correlationsN, node, threshold, plot_line = F, line = NA){
+          ## Correlation elbow
+          cors = correlationsN$correlations
+          file.name = paste('results/correlation_elbow_node', node, '.png', sep = '')
+          
+          png(file.name, width = 1000, height = 1000, res = 100)
+          plot(abs(cors), main=paste('Node ', node, sep = ''), 
+               ylab = '|Correlation|', xlab='Index', ylim = c(threshold, 1.0))
+          if(plot_line == T){
+               abline(line, 0)     
+          }
+          dev.off()
+     }
      
-     cors = correlations42$correlations
-     file.name = paste('correlation_elbow_node42', '.png', sep = '')
-     png(file.name, width = 1000, height = 1000, res = 100)
-     plot(abs(cors), main=paste('Node ', node, sep = ''), ylab = '|Correlation|', xlab='Index')
-     dev.off()
-     
-     cors = correlations93$correlations
-     file.name = paste('correlation_elbow_node93', '.png', sep = '')
-     png(file.name, width = 1000, height = 1000, res = 100)
-     plot(abs(cors), main=paste('Node ', node, sep = ''), ylab = '|Correlation|', xlab='Index')
-     dev.off()
-     
-     cors = correlations1$correlations
-     file.name = paste('correlation_elbow_node1', '.png', sep = '')
-     png(file.name, width = 1000, height = 1000, res = 100)
-     plot(abs(cors), main=paste('Node ', node, sep = ''), ylab = '|Correlation|', xlab='Index')
-     dev.off()
+     plot_corr_elbow(correlations1, 1, threshold, plot_line = T, line = 0.75)
+     plot_corr_elbow(correlations3, 3, threshold, plot_line = T, line = 0.65)
+     plot_corr_elbow(correlations13, 13, threshold, plot_line = T, line = 0.65)
+     plot_corr_elbow(correlations16, 16, threshold, plot_line = T, line = 0.75)
+     plot_corr_elbow(correlations40, 40, threshold, plot_line = T, line = 0.7)
+     plot_corr_elbow(correlations42, 42, threshold, plot_line = T, line = 0.55)
+     plot_corr_elbow(correlations56, 56, threshold, plot_line = T, line = 0.75)
+     plot_corr_elbow(correlations58, 58, threshold, plot_line = T, line = 0.8)
+     plot_corr_elbow(correlations86, 86, threshold, plot_line = T, line = 0.75)
+     plot_corr_elbow(correlations93, 93, threshold, plot_line = T, line = 0.6)
      
      
 #####################
 # Correlation diagram
 ##################### 
      ## Correlation with methylation
-     cors = correlations1$correlations
-     cpg = correlations1$CpG[1]
-     cg14789818 = betas[,cpg]
-     node = 40
-     vaeNode = vae[, as.character(node)]
-
-     df = data.frame(cbind(vaeNode, cg14789818))
-     BRCA.covsSub = BRCA.covsSub[order(BRCA.covsSub$Basename, decreasing=T), ]
-     all(BRCA.covsSub$Basename == rownames(df))
-     df = cbind(df, BRCA.covsSub$sample.typeInt)
-     colnames(df) = c('activation', 'beta', 'sample')
-     df$sample = factor(df$sample)
      
-     file.name = paste('methylation_V_node', node, '.png', sep = '')
-     png(file.name, width = 1000, height = 1000, res = 100)
+     # cors = correlations1$correlations
+     # cpg = correlations1$CpG[1]
+     # CpGprobe = betas[,cpg]
+     # node = 40
+     # vaeNode = vae[, as.character(node)]
+     # 
+     # df = data.frame(cbind(vaeNode, cg14789818))
+     # BRCA.covsSub = BRCA.covsSub[order(BRCA.covsSub$Basename, decreasing=T), ]
+     # all(BRCA.covsSub$Basename == rownames(df))
+     # df = cbind(df, BRCA.covsSub$sample.typeInt)
+     # colnames(df) = c('activation', 'beta', 'sample')
+     # df$sample = factor(df$sample)
+     # 
+     # file.name = paste('methylation_V_node', node, '.png', sep = '')
+     # png(file.name, width = 1000, height = 1000, res = 100)
+     # 
+     # ggscatter(df, x = 'activation', y = 'beta',
+     #           color = 'sample', ylab = 'CpG cg13985135 beta value',
+     #           xlab = 'Activation of node 40',
+     #           add = "reg.line",  # Add regressin line
+     #           add.params = list(color = "blue", fill = "lightgray"), # Customize reg. line
+     #           conf.int = TRUE, # Add confidence interval
+     #           cor.coef = TRUE, # Add correlation coefficient. see ?stat_cor
+     #           cor.coeff.args = list(method = "pearson", label.x = 0.35, label.y = 0.35, label.sep = "\n"))
+     # 
+     # dev.off()
      
-     ggscatter(df, x = 'activation', y = 'beta',
-               color = 'sample', ylab = 'CpG cg13985135 beta value',
-               xlab = 'Activation of node 40',
-               add = "reg.line",  # Add regressin line
-               add.params = list(color = "blue", fill = "lightgray"), # Customize reg. line
-               conf.int = TRUE, # Add confidence interval
-               cor.coef = TRUE, # Add correlation coefficient. see ?stat_cor
-               cor.coeff.args = list(method = "pearson", label.x = 0.35, label.y = 0.35, label.sep = "\n"))
-
-     dev.off()
-     
-     
+          # library(circlize)
+     # 
+     # threshold = 0.6
+     # 
+     # correlations = correlations1
+     # summary(correlations)
+     # 
+     # cor.sub = correlations[(correlations$correlations >= threshold | 
+     #                              correlations$correlations < -1*threshold), ]
+     # 
+     # file.name = paste('VAE', node, '_ChordPlot.png', sep = '')
+     # 
+     # png(file.name, width = 2000, height = 2000, res = 300)
+     #      
+     #      col_fun = colorRamp2(range(cor.sub$correlations), c("yellow", "blue"), 
+     #                           transparency = 0.5)
+     #      
+     #      chordDiagram(cor.sub, 
+     #                   col = col_fun,
+     #                   link.sort = TRUE, link.decreasing = TRUE,
+     #                   annotationTrack = c("grid"),
+     #                   preAllocateTracks = 1)
+     #      
+     #      circos.trackPlotRegion(track.index = 1, panel.fun = function(x, y) {
+     #           xlim = get.cell.meta.data("xlim")
+     #           ylim = get.cell.meta.data("ylim")
+     #           sector.name = get.cell.meta.data("sector.index")
+     #           circos.text(mean(xlim), ylim[1] + .1, sector.name, facing = "clockwise", niceFacing = TRUE, adj = c(0, 0.5))
+     #           circos.axis(h = "top", labels.cex = 0.5, major.tick.percentage = 0.2, sector.index = sector.name, track.index = 2)
+     #      }, bg.border = NA)
+     #      
+     #      
+     #      title(paste("Correlations (>=", threshold , ") between CpGs and VAE node ",  node, sep = ''), cex = 0.8)
+     #      
+     # dev.off()
+     # 
+     # circos.clear()
+     # 
 #####################
 # Chord diagram 
 #####################
-     library(circlize)
-     
-     threshold = 0.6
-     
-     correlations = correlations1
-     summary(correlations)
-     
-     cor.sub = correlations[(correlations$correlations >= threshold | 
-                                  correlations$correlations < -1*threshold), ]
-     
-     file.name = paste('VAE', node, '_ChordPlot.png', sep = '')
-     
-     png(file.name, width = 2000, height = 2000, res = 300)
-          
-          col_fun = colorRamp2(range(cor.sub$correlations), c("yellow", "blue"), 
-                               transparency = 0.5)
-          
-          chordDiagram(cor.sub, 
-                       col = col_fun,
-                       link.sort = TRUE, link.decreasing = TRUE,
-                       annotationTrack = c("grid"),
-                       preAllocateTracks = 1)
-          
-          circos.trackPlotRegion(track.index = 1, panel.fun = function(x, y) {
-               xlim = get.cell.meta.data("xlim")
-               ylim = get.cell.meta.data("ylim")
-               sector.name = get.cell.meta.data("sector.index")
-               circos.text(mean(xlim), ylim[1] + .1, sector.name, facing = "clockwise", niceFacing = TRUE, adj = c(0, 0.5))
-               circos.axis(h = "top", labels.cex = 0.5, major.tick.percentage = 0.2, sector.index = sector.name, track.index = 2)
-          }, bg.border = NA)
-          
-          
-          title(paste("Correlations (>=", threshold , ") between CpGs and VAE node ",  node, sep = ''), cex = 0.8)
-          
-     dev.off()
-     
-     circos.clear()
-     
+
      
 #####################
 # Genomic context
 #####################
      ## https://www.bioconductor.org/help/workflows/methylationArrayAnalysis/
+     #install.packages('matrixStats')
+     #source("https://bioconductor.org/biocLite.R")
      #biocLite('missMethyl')
      library(missMethyl)
      library(Gviz)
      require(minfi)
+     library(IlluminaHumanMethylation450kanno.ilmn12.hg19)
      
-     threshold = 0.5
-     node = 'All'
-     #correlations = correlations1
-     #correlations = correlations40
-     #correlations = correlations42
-     #correlations = correlations93
-
-     summary(correlations)
-     
-     cor.sub = correlations[(correlations$correlations >= threshold | 
-                                  correlations$correlations < -1*threshold), ]
-     
-     
-     #cpgs = rownames(cor.sub)
-     #cpg_set = cor.sub
-     cpg_set = rbind(cpg_set, cor.sub)
-     
-     cpgs = cpg_set$CpG     
-
+     threshold = 0.55
+     node = '93'
      ann450k = getAnnotation(IlluminaHumanMethylation450kanno.ilmn12.hg19)
      head(ann450k)
      
-     anno.sub = ann450k[rownames(ann450k) %in% cpgs, ]
-     anno.sub = data.frame(anno.sub)
-     anno.sub = cbind('NodeCor' = cor.sub$correlations, anno.sub)
-     
-     file.name = paste('../results/anno450K_node', node, '.csv', sep = '')
-     write.csv(anno.sub, file.name)     
-     
-     
-     ## GSA & GO analysis
-     # load Broad human curated (C2) gene sets
-     # http://bioinf.wehi.edu.au/software/MSigDB/
-     load('human_c2_v5p2.rdata')
-     
-     # analysis
-     par(mfrow=c(1,1))
-     all = colnames(betas)
-     gst <- gometh(sig.cpg=cpgs, all.cpg=all, plot.bias=TRUE)
-     gsa <- gsameth(sig.cpg=cpgs, all.cpg=all, collection=Hs.c2)
-     
-     # Top 10 GO categories
-     go = topGO(gst, number = 30); go
+     go_pathway_analysis = function(correlationsN, node, threshold, annotations){
+          correlations = correlationsN
+          
+          cor.sub = correlations[(correlations$correlations >= threshold | 
+                                       correlations$correlations < -1*threshold), ]
+          
+          cpgs = rownames(cor.sub)
+          cpg_set = cor.sub
+          cpg_set = rbind(cpg_set, 1, cor.sub)
+          
+          cpgs = cpg_set$CpG     
+          
+          ann450k = annotations
+          
+          anno.sub = ann450k[rownames(ann450k) %in% cpgs, ]
+          anno.sub = data.frame(anno.sub)
+          anno.sub = cbind('NodeCor' = cor.sub$correlations, anno.sub)
+          
+          file.name = paste('results/anno450K_node', node, '.csv', sep = '')
+          write.csv(anno.sub, file.name)     
+          
+          
+          ## GSA & GO analysis
+          # load Broad human curated (C2) gene sets
+          # http://bioinf.wehi.edu.au/software/MSigDB/
+          load('human_c2_v5p2.rdata')
+          
+          # analysis
+          par(mfrow=c(1,1))
+          all = colnames(betas)
+          cpgs = as.character(cpgs)
+          gst <- gometh(sig.cpg=cpgs, all.cpg=all, plot.bias=TRUE)
+          gsa <- gsameth(sig.cpg=cpgs, all.cpg=all, collection=Hs.c2)
+          
+          # Top 10 GO categories
+          go = topGO(gst, number = 30)
+          
+          # Top 10 gene sets
+          gsa = topGSA(gsa, number=20)
+          
+          gofile.name = paste('results/go_anno_node', node, '.csv', sep = '')
+          write.csv(go, gofile.name) 
+          
+          gsafile.name = paste('results/gsa_anno_node', node, '.csv', sep = '')
+          write.csv(gsa, gsafile.name) 
+     }
 
-     # Top 10 gene sets
-     gsa = topGSA(gsa, number=20); gsa
+     go_pathway_analysis(correlations1, 1, threshold = 0.75, ann450k)
+     go_pathway_analysis(correlations3, 3, threshold = 0.65, ann450k)
+     go_pathway_analysis(correlations13, 13, threshold = 0.65, ann450k)
+     go_pathway_analysis(correlations16, 16, threshold = 0.75, ann450k)
+     go_pathway_analysis(correlations40, 40, threshold = 0.7, ann450k)
+     go_pathway_analysis(correlations42, 42, threshold = 0.55, ann450k)
+     go_pathway_analysis(correlations56, 56, threshold = 0.75, ann450k)
+     go_pathway_analysis(correlations58, 58, threshold = 0.8, ann450k)
+     go_pathway_analysis(correlations86, 86, threshold = 0.75, ann450k)
+     go_pathway_analysis(correlations93, 93, threshold = 0.6, ann450k)
      
-     gofile.name = paste('results/go_anno_node', node, '.csv', sep = '')
-     write.csv(go, gofile.name) 
-     
-     gsafile.name = paste('results/gsa_anno_node', node, '.csv', sep = '')
-     write.csv(gsa, gsafile.name) 
-     
+         
      
 #####################
 # Enhancer calculations
 #####################
-     threshold = 0.65
-     node = 13
-     #correlations = correlations1
-     #correlations = correlations40
-     #correlations = correlations42
-     #correlations = correlations93
-     correlations = correlations13
-     
-     summary(correlations)
-     
-     cor.sub = correlations[(correlations$correlations >= threshold | 
-                                  correlations$correlations < -1*threshold), ]
-     
-     
-     cpgs = rownames(cor.sub)
-     #cpg_set = cor.sub
-     cpg_set = rbind(cpg_set, cor.sub)
-     
-     #cpg_set.unique = cpg_set[unique(cpg_set$CpG), ]
-     
+
      ann450k = getAnnotation(IlluminaHumanMethylation450kanno.ilmn12.hg19)
-     head(ann450k)
      
-     anno.sub = ann450k[rownames(ann450k) %in% cpgs, ]
-     anno.sub = data.frame(anno.sub)
-     anno.sub = cbind('NodeCor' = cor.sub$correlations, anno.sub)
+     enhancer_analysis = function(correlations_list, node_list, threshold, annotations){
+          
+          enhancerResults = c('Node', 'Est', 'Conf95low', 'Conf95high', 'Pvalue')
+          
+          for( i in 1:length(correlations_list) ){
+               correlations = correlations_list[[i]]
+               
+               nodeName = paste('VAE', node_list[i], sep='')
+
+               cor.sub = correlations[(correlations$correlations >= threshold | 
+                                            correlations$correlations < -1*threshold), ]
+               
+               
+               cpgs = rownames(cor.sub)
+               cpg_set = cor.sub
+               cpg_set.unique = cpg_set[rownames(cpg_set) %in% unique(cpg_set$CpG), ]
+               
+               ann450k = annotations
+               
+               anno.sub = ann450k[rownames(ann450k) %in% cpg_set.unique[cpg_set.unique$nodeLabel == nodeName, ]$CpG, ]
+               anno.sub = data.frame(anno.sub)
+               anno.sub = anno.sub[order(rownames(anno.sub)), ]
+               
+               cpg_set.unique = cpg_set.unique[order(cpg_set.unique$CpG), ]
+               
+               temp = cpg_set.unique[cpg_set.unique$nodeLabel == nodeName, ]
+               all(temp$CpG == rownames(anno.sub))
+               
+               anno.sub = cbind('NodeCor' = temp$correlations, anno.sub)
+               
+               nodeEnhancer = nrow(anno.sub[anno.sub$Enhancer == 'TRUE', ]); nodeEnhancer
+               nodeNoEnhancer = nrow(anno.sub[anno.sub$Enhancer == '', ]); nodeNoEnhancer
+               annoEnhancer = nrow(ann450k[ann450k$Enhancer == 'TRUE', ]); annoEnhancer
+               annoNoEnhancer = nrow(ann450k[ann450k$Enhancer == '', ]); annoNoEnhancer
+               
+               enhancers <- matrix(c(nodeEnhancer, annoEnhancer, 
+                                     nodeNoEnhancer, annoNoEnhancer), nrow = 2,
+                                   dimnames =
+                                        list(c("NodeRelated", "NotNodeRelated"),
+                                             c("Enhancer", "NotEnhancer")))
+               
+               node.results = fisher.test(enhancers); node.results
+               
+               
+               
+               row = c(nodeName, node.results$estimate, 
+                       node.results$conf.int[1],
+                       node.results$conf.int[2],
+                       node.results$p.value)
+               
+               enhancerResults = rbind(enhancerResults, row)
+          }
+          
+          enhancerResults = data.frame(enhancerResults)
+          enhancerResults2 = enhancerResults
+          colnames(enhancerResults2) = as.character(unlist(enhancerResults2[1, ]))
+          enhancerResults2 = enhancerResults2[2:nrow(enhancerResults2), ]
+          enhancerResults2$Est = as.numeric(as.character(enhancerResults2$Est))
+          enhancerResults2$Conf95low = as.numeric(as.character(enhancerResults2$Conf95low))
+          enhancerResults2$Conf95high = as.numeric(as.character(enhancerResults2$Conf95high))
+          enhancerResults2$Pvalue = as.numeric(as.character(enhancerResults2$Pvalue))
+          
+          return(enhancerResults2)
+     }
+    
      
-     nodeEnhancer = nrow(anno.sub[anno.sub$Enhancer == 'TRUE', ])
-     nodeNoEnhancer = nrow(anno.sub[anno.sub$Enhancer == '', ])
-     annoEnhancer = nrow(ann450k[ann450k$Enhancer == 'TRUE', ])
-     annoNoEnhancer = nrow(ann450k[ann450k$Enhancer == '', ])
+
+     correlations_list = list(correlations1, correlations3, 
+                              correlations13, correlations16,
+                              correlations40, correlations42,
+                              correlations56, correlations58,
+                              correlations86, correlations93)
      
-     enhancers <- matrix(c(nodeEnhancer, annoEnhancer, 
-                           nodeNoEnhancer, annoNoEnhancer), nrow = 2,
-                           dimnames =
-                                list(c("NodeRelated", "NotNodeRelated"),
-                                     c("Enhancer", "NotEnhancer")))
+     node_list = c(1, 3, 13, 16, 40, 42, 56, 58, 86, 93) 
      
-     node.results = fisher.test(enhancers)
-     
-     #enhancerResults = data.frame('Node',
-                                  'Est', 
-                                  'Conf95low', 
-                                  'Conf95high', 
-                                  'Pvalue')
-     
-     enhancerResults = rbind(enhancerResults,
-                             c(node,
-                               node.results$estimate, 
-                               node.results$conf.int[1],
-                               node.results$conf.int[2],
-                               node.results$p.value))
-     
-     #colnames(enhancerResults) = enhancerResults[1, ]
-     #enhancerResults = enhancerResults[2:nrow(enhancerResults), ]
-     enhancerResults$Est = as.numeric(enhancerResults$Est)
-     enhancerResults$Conf95low = as.numeric(enhancerResults$Conf95low)
-     enhancerResults$Conf95high = as.numeric(enhancerResults$Conf95high)
-     enhancerResults$Pvalue = as.numeric(enhancerResults$Pvalue)
+     enhancer_results = enhancer_analysis(correlations_list, node_list, threshold, ann450k)
+     View(enhancer_results)
      
      
 #####################
@@ -357,8 +429,9 @@
 #####################
 # Enhancer OR
 ##################### 
-     fp <- ggplot(data=enhancerResults, aes(x=Est, 
-                                            y=as.character(Node), 
+     library(ggplot2)
+     fp <- ggplot(data=enhancer_results, aes(x=Est, 
+                                            y=Node, 
                                             xmin=Conf95low, 
                                             xmax=Conf95high)) +
           geom_point(color = 'black') +
@@ -366,10 +439,10 @@
           geom_errorbarh(height=.02) +
           ylab('Node') +
           geom_vline(xintercept=1, color='black', linetype='dashed') +
-          scale_x_continuous(limits=c(0,max(enhancerResults$Conf95high)), name='Odds ratio w/ 95% CI') +
+          scale_x_continuous(limits=c(0,max(enhancer_results$Conf95high)), name='Odds ratio w/ 95% CI') +
           ggtitle('OR for enhancer in each node set of CpGs') + theme_Publication()
      
-     png('OR_enhancer_by_node.png', width = 2000, height = 2000, res = 300)
+     png('results/OR_enhancer_by_node.png', width = 2000, height = 2000, res = 300)
      fp
      dev.off()
      
@@ -377,12 +450,16 @@
 #####################
 # Visualize genomic context
 #####################
-
+     #biocLite('cirlize')
+     library(circlize)
+     
      ## Visualization
      #http://zuguang.de/circlize_book/book/high-level-genomic-functions.html#genomic-heatmap
-     cpg_set.unique = cpg_set[unique(cpg_set$CpG), ]
+     cpg_set.unique = cpg_set.unique = cpg_set[rownames(cpg_set) %in% unique(cpg_set$CpG), ]
      
      anno.sub = ann450k[which(rownames(ann450k) %in% cpg_set.unique$CpG), ]
+     anno.sub = data.frame(anno.sub)
+     
      anno.sub = anno.sub[order(rownames(anno.sub)), ]
      cpg_set.unique = cpg_set.unique[order(rownames(cpg_set.unique)), ]
      all(rownames(anno.sub) == rownames(cpg_set.unique))
@@ -392,66 +469,64 @@
                  anno.sub$pos + 10,
                  cpg_set.unique$correlations,
                  rownames(anno.sub),
-                 cpg_set.unique$CpG,
-                 cpg_set.unique$nodeLabel)
+                 rownames(cpg_set.unique),
+                 as.character(cpg_set.unique$nodeLabel))
      bed = data.frame(bed)
      colnames(bed) = c('chr', 'start', 'end', 'value1', 'AnnoCpG', 'CorrCpG', 'Node')
      all(bed$AnnoCpG == bed$CorrCpG)
      
-     bed$start = as.numeric(bed$start)
-     bed$end = as.numeric(bed$end)
-     bed$value1 = as.numeric(bed$value1)
-     bed = bed[order(bed$chr), ]
+     bed$start = as.numeric(as.character(bed$start))
+     bed$end = as.numeric(as.character(bed$end))
+     bed$value1 = as.numeric(as.character(bed$value1))
      
-     bed_list = list('VAE1' = bed[bed$Node == 'VAE1', ], 
-                     'VAE40' = bed[bed$Node == 'VAE40', ],
-                     'VAE42' = bed[bed$Node == 'VAE42', ],
-                     'VAE93' = bed[bed$Node == 'VAE93', ])
+     bed = bed[with(bed, order(bed$chr)), ]
+     
+     bed_list = list('VAE1' = bed[bed$Node == 'VAE1', ],
+                     'VAE13' = bed[bed$Node == 'VAE13', ],
+                     'VAE40' = bed[bed$Node == 'VAE40', ])#,
+                     #'VAE42' = bed[bed$Node == 'VAE42', ],
+                     #'VAE93' = bed[bed$Node == 'VAE93', ])
      
      circlize_plot = function() {
           circos.initializeWithIdeogram(species = "hg19", chromosome.index = paste0("chr", 1:22))
           circos.genomicRainfall(bed_list, pch = 16, cex = 0.4, col = c("#FF000080", 
+                                                                        "blue",
                                                                         "#0000FF80", 
                                                                         "orangered1",
                                                                         "lightsteelblue"))
           
           circos.genomicDensity(bed[bed$Node == 'VAE1', ], col = c("#FF000080"), track.height = 0.1)
+          circos.genomicDensity(bed[bed$Node == 'VAE13', ], col = c("blue"), track.height = 0.1)
           circos.genomicDensity(bed[bed$Node == 'VAE40', ], col = c("#0000FF80"), track.height = 0.1)
-          circos.genomicDensity(bed[bed$Node == 'VAE42', ], col = c("orangered1"), track.height = 0.1)
-          circos.genomicDensity(bed[bed$Node == 'VAE93', ], col = c("lightsteelblue"), track.height = 0.1)
+          #circos.genomicDensity(bed[bed$Node == 'VAE42', ], col = c("orangered1"), track.height = 0.1)
+          #circos.genomicDensity(bed[bed$Node == 'VAE93', ], col = c("lightsteelblue"), track.height = 0.1)
           circos.clear()
      }
      
      
      ## Corr > 0.6
-     png('genomic_context_corr0.6.png', width = 2000, height = 2000, res = 300)
+     png('results/genomic_context_corr.png', width = 2000, height = 2000, res = 300)
      circlize_plot()
      dev.off()
      
      out.data = merge(anno.sub, bed, by.x = 'Name', by.y = 'AnnoCpG')
-     write.csv(out.data, file = 'results/genomic_context_anno_corr0.6.csv')
-     
-     ## Corr > 0.75
-     png('results/genomic_context_corr0.75.png', width = 2000, height = 2000, res = 300)
-     circlize_plot()
-     dev.off()
-     
-     out.data = merge(anno.sub, bed, by.x = 'Name', by.y = 'AnnoCpG')
-     write.csv(out.data, file = 'results/genomic_context_anno_corr0.75.csv')
+     write.csv(out.data, file = 'results/genomic_context_anno_corr.csv')
           
      
 #####################
 # VAE activations
 #####################
-     vae.sub = vae[, c(1, 40, 42, 93)]
+     library(reshape)
+     vae.sub = vae[, c(1, 13, 16, 40, 42, 56, 58, 86, 93)]
      vae.sub$SubjectID = rownames(vae.sub)
      VAE.covs = merge(vae.sub, BRCA.covs, by.x = 'SubjectID', by.y = 'Basename')
-     temp = melt(VAE.covs[, c(1, 40, 42, 93, 'sample.typeInt', "sample.type", "PAM50.RNAseq")], 
+     temp = melt(VAE.covs[, c(1, 13, 16, 40, 42, 56, 58, 86, 93, 'sample.typeInt', "sample.type", "PAM50.RNAseq")], 
                  id=c('sample.typeInt', 'sample.type', 'PAM50.RNAseq'))
      
      colnames(temp) = c('SampleTypeInt', 'SampleType', 'PAM50orNormal', 'Node', 'Activation')
      temp$SampleTypeInt = factor(temp$SampleTypeInt)
      
+     #install.packages('ggpubr')
      library(ggpubr)
      png('Node_activationsInt.png', width = 2000, height = 2000, res = 300)
      my_comparisons <- list( c("1", "40"), c("40", "42"), c("42", "93"), 
@@ -470,7 +545,66 @@
    
      
      
-
 #####################
-# VAE activations
+# multinomial regression
 #####################
+     
+     library("nnet")
+     
+     set.seed(100)
+     temp = VAE.covs[VAE.covs$PAM50 != '', ]
+     trainingRows <- sample(1:nrow(temp), 0.7*nrow(temp))
+     training <- temp[trainingRows, ]
+     test <- temp[-trainingRows, ]
+     
+     train <- multinom(PAM50.RNAseq ~ `1` + `13` + `16` +  
+                                      `40` + `42` + `56` + `58` + 
+                                      `86` + `93`, data = training)
+     summary(train)
+     z <- summary(train)$coefficients/summary(train)$standard.errors
+     z
+     p <- (1 - pnorm(abs(z), 0, 1))*2
+     p
+     exp(coef(train))
+     
+     pred <- predict (train, test, "probs") # predict on new data
+     pred
+     pred_class <- predict(train, test)
+     pred_class
+     
+     table(pred_class, test$PAM50.RNAseq)
+     mean(as.character(pred_class) == as.character(test$PAM50.RNAseq))
+     
+     
+     # 1 v Rest
+     #########################
+     # Split data
+     set.seed(1234)
+     train.prob = rbinom(nrow(temp), 1, 0.5)
+     temp$TranVtest = train.prob
+     
+     temp$BasalVother = ifelse(temp$PAM50.RNAseq == "Basal", 1, 0)
+     temp$NormalVother = ifelse(temp$PAM50.RNAseq == "Normal", 1, 0)
+     temp$Her2Vother = ifelse(temp$PAM50.RNAseq == "Her2", 1, 0)
+     temp$LumAVother = ifelse(temp$PAM50.RNAseq == "LumA", 1, 0)
+     temp$LumBVother = ifelse(temp$PAM50.RNAseq == "LumB", 1, 0)
+     temp$LumVother = ifelse(temp$PAM50.RNAseq == "LumA" | 
+                                  temp$PAM50.RNAseq == "LumB", 1, 0)
+     
+     #########################
+     # Build model - logistic regression "Classify as normal" - 3D
+     temp.data = temp[, c('NormalVother', "1", "40", "42", "93")]
+     
+     train.data = temp.data[train.prob == 1, ]
+     test.data = temp.data[train.prob == 0, ]
+     
+     model <- glm(factor(NormalVother) ~., family=binomial(link='logit'), data=train.data) 
+     summary(model)
+     
+     # Testing the model
+     fitted.results <- predict(model,newdata=test.data,type='response')
+     fitted.results <- ifelse(fitted.results > 0.5,1,0)
+     misClasificError <- mean(fitted.results != test.data$NormalVother)
+     normal3dAccuracy = 1-misClasificError
+     print(paste('Accuracy = ',normal3dAccuracy))
+     

@@ -1,0 +1,31 @@
+"","Term","Ont","N","DE","P.DE","FDR"
+"GO:0043565","sequence-specific DNA binding","MF",984,35,0.000233229820626823,1
+"GO:0009954","proximal/distal pattern formation","BP",32,6,0.000281049770374688,1
+"GO:0070412","R-SMAD binding","MF",21,4,0.000677823290975724,1
+"GO:0090107","regulation of high-density lipoprotein particle assembly","BP",3,2,0.000705417360888425,1
+"GO:0000988","transcription factor activity, protein binding","MF",546,20,0.000763698525535021,1
+"GO:0070830","bicellular tight junction assembly","BP",46,5,0.000888508001802128,1
+"GO:0071636","positive regulation of transforming growth factor beta production","BP",14,3,0.00107928371909092,1
+"GO:0070410","co-SMAD binding","MF",9,3,0.00121321260505192,1
+"GO:0060290","transdifferentiation","BP",8,3,0.00137808976545978,1
+"GO:0000989","transcription factor activity, transcription factor binding","MF",542,19,0.00165680231396989,1
+"GO:0043297","apical junction assembly","BP",55,5,0.00198727351764245,1
+"GO:0060197","cloacal septation","BP",3,2,0.00202434361201527,1
+"GO:0004699","calcium-independent protein kinase C activity","MF",3,2,0.00203337528068224,1
+"GO:0046332","SMAD binding","MF",65,6,0.00206769263506953,1
+"GO:0043425","bHLH transcription factor binding","MF",24,4,0.00230762359699915,1
+"GO:0035025","positive regulation of Rho protein signal transduction","BP",13,3,0.0023880789303177,1
+"GO:0034377","plasma lipoprotein particle assembly","BP",20,3,0.00268205278668279,1
+"GO:0034185","apolipoprotein binding","MF",15,3,0.00281335140641505,1
+"GO:0003712","transcription cofactor activity","MF",491,17,0.00283405103041086,1
+"GO:0005634","nucleus","CC",6344,108,0.00289081143188606,1
+"GO:0003677","DNA binding","MF",2292,51,0.00295463140006499,1
+"GO:0035844","cloaca development","BP",4,2,0.00316112333565226,1
+"GO:0034062","RNA polymerase activity","MF",41,3,0.00352316822792175,1
+"GO:0003002","regionalization","BP",320,16,0.00383156414641214,1
+"GO:0044212","transcription regulatory region DNA binding","MF",780,26,0.00391992342686028,1
+"GO:0000975","regulatory region DNA binding","MF",783,26,0.00414963074632833,1
+"GO:0001067","regulatory region nucleic acid binding","MF",784,26,0.00427802685303595,1
+"GO:0005666","DNA-directed RNA polymerase III complex","CC",18,2,0.00439614626834324,1
+"GO:0001056","RNA polymerase III activity","MF",18,2,0.00439614626834324,1
+"GO:0065005","protein-lipid complex assembly","BP",22,3,0.00453093354763407,1

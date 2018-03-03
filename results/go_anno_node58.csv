@@ -1,0 +1,31 @@
+"","Term","Ont","N","DE","P.DE","FDR"
+"GO:0022011","myelination in peripheral nervous system","BP",22,7,7.10273098520215e-05,0.527091152719913
+"GO:0032292","peripheral nervous system axon ensheathment","BP",22,7,7.10273098520215e-05,0.527091152719913
+"GO:0014044","Schwann cell development","BP",24,7,0.000120194702553645,0.527091152719913
+"GO:1904424","regulation of GTP binding","BP",6,4,0.000124868281356186,0.527091152719913
+"GO:0005515","protein binding","MF",8314,380,0.000125677432694304,0.527091152719913
+"GO:0015630","microtubule cytoskeleton","CC",1019,62,0.000196655979309937,0.660951658742685
+"GO:0030427","site of polarized growth","CC",131,18,0.000220632408736232,0.660951658742685
+"GO:0044430","cytoskeletal part","CC",1420,81,0.00028018935834226,0.73444635555465
+"GO:0005815","microtubule organizing center","CC",606,39,0.000328099966629819,0.764472922247478
+"GO:0045184","establishment of protein localization","BP",1861,100,0.000382561693896388,0.786580693882363
+"GO:0019003","GDP binding","MF",48,7,0.000428080733088372,0.786580693882363
+"GO:0005856","cytoskeleton","CC",1905,106,0.000450117707514943,0.786580693882363
+"GO:0014037","Schwann cell differentiation","BP",31,7,0.000571691034679387,0.922181615171288
+"GO:0061630","ubiquitin protein ligase activity","MF",183,16,0.000618097263414951,0.925821400986537
+"GO:0044272","sulfur compound biosynthetic process","BP",191,18,0.000741990627167699,1
+"GO:0061659","ubiquitin-like protein ligase activity","MF",188,16,0.000766367641535909,1
+"GO:0005813","centrosome","CC",465,30,0.000827123273862967,1
+"GO:0005086","ARF guanyl-nucleotide exchange factor activity","MF",23,6,0.0010143117809136,1
+"GO:0006914","autophagy","BP",409,28,0.00102376935598789,1
+"GO:0005085","guanyl-nucleotide exchange factor activity","MF",288,29,0.00105937514656137,1
+"GO:0043473","pigmentation","BP",87,11,0.00107268674667756,1
+"GO:0030426","growth cone","CC",126,16,0.00110453832232658,1
+"GO:0007264","small GTPase mediated signal transduction","BP",519,40,0.00126101292533403,1
+"GO:0072386","plus-end-directed organelle transport along microtubule","BP",7,3,0.00138034490162894,1
+"GO:0072383","plus-end-directed vesicle transport along microtubule","BP",7,3,0.00138034490162894,1
+"GO:2001236","regulation of extrinsic apoptotic signaling pathway","BP",150,16,0.00143936707411799,1
+"GO:0061343","cell adhesion involved in heart morphogenesis","BP",4,3,0.00146021271447866,1
+"GO:1902262","apoptotic process involved in patterning of blood vessels","BP",5,3,0.00160493946585481,1
+"GO:0030318","melanocyte differentiation","BP",24,6,0.00162672730216096,1
+"GO:0001569","patterning of blood vessels","BP",32,7,0.00163883491707314,1

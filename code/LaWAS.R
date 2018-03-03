@@ -3,6 +3,8 @@
      
      
 ### Setup the environment we need ###
+source("https://bioconductor.org/biocLite.R")
+# biocLite("qvalue")
 # install.packages('glmnet')
 # install.packages('data.table')
 require(glmnet)
@@ -91,6 +93,7 @@ summary(q.values)
 #### Generate the theme of each ggplot ####
 results$negLog10P = -log(results$pvalues)
 results$Nodes = rownames(results)
+library(ggpubr)
 
 png('Nodes_LaEWAS.png', width = 2000, height = 2000, res = 300)
 
@@ -98,7 +101,8 @@ ggscatter(results, x = "beta", y = "negLog10P",
               color = "black", 
               xlab = 'Beta', 
               ylab = '-log10(P-value)',
-              label = 'Nodes')
+              label = 'Nodes',
+              repel = T)
 
 dev.off()
 
@@ -173,18 +177,22 @@ dev.off()
      #install.packages('dplyr') # Only have to run once.
      library(dplyr)
      library(reshape2)
+     library(circlize)
      correlations = cor(vae_mat)
      d_cor_melt <- arrange(melt(correlations), -abs(value))
      d_cor_melt = data.frame(d_cor_melt)
      
+     #write.csv(d_cor_melt, '../results/node_correlations.csv')
+     
      d_cor_melt$Var1 = as.character(d_cor_melt$Var1)
      d_cor_melt$Var2 = as.character(d_cor_melt$Var2)
      
-     cor.sub = d_cor_melt[(d_cor_melt$value > 0.85 | d_cor_melt$value < -0.85) &
+     cor_thresh = 0.8
+     cor.sub = d_cor_melt[(d_cor_melt$value > cor_thresh | d_cor_melt$value < -1*cor_thresh) &
                           (d_cor_melt$value < 1 & d_cor_melt$value > -1), ]
      
      
-     #png('VAE_ChordPlot.png', width = 2000, height = 2000, res = 300)
+     png('VAE_ChordPlot.png', width = 2000, height = 2000, res = 300)
      
      col_fun = colorRamp2(range(cor.sub$value), c("yellow", "blue"), 
                           transparency = 0.5)
@@ -196,7 +204,7 @@ dev.off()
                   link.sort = TRUE, link.decreasing = TRUE,
                   annotationTrack = c('name', "grid"))
      
-     title("Correlations between VAE nodes", cex = 0.8)
+     title(paste("Correlations between VAE nodes (corr > abs(", cor_thresh, '))',  sep = ''), cex = 0.8)
      
      circos.clear()
      dev.off()

@@ -1,0 +1,31 @@
+"","Term","Ont","N","DE","P.DE","FDR"
+"GO:0016779","nucleotidyltransferase activity","MF",119,6,0.000257886327167162,1
+"GO:1902494","catalytic complex","CC",1045,23,0.000303363316582874,1
+"GO:1900040","regulation of interleukin-2 secretion","BP",8,3,0.000358242768845284,1
+"GO:0070412","R-SMAD binding","MF",21,4,0.000365653687692253,1
+"GO:0035791","platelet-derived growth factor receptor-beta signaling pathway","BP",8,3,0.000375438826803581,1
+"GO:0070970","interleukin-2 secretion","BP",10,3,0.000458950154524057,1
+"GO:0061300","cerebellum vasculature development","BP",2,2,0.000459501527403085,1
+"GO:1902743","regulation of lamellipodium organization","BP",35,5,0.000551405171938677,1
+"GO:0060290","transdifferentiation","BP",8,3,0.000838808256428951,1
+"GO:0010591","regulation of lamellipodium assembly","BP",25,4,0.00116539009839154,1
+"GO:0000118","histone deacetylase complex","CC",55,5,0.00118111367689363,1
+"GO:0007183","SMAD protein complex assembly","BP",14,3,0.00120679696229395,1
+"GO:0001054","RNA polymerase I activity","MF",12,2,0.00187026478665953,1
+"GO:0034061","DNA polymerase activity","MF",31,3,0.00191658945032252,1
+"GO:0030880","RNA polymerase complex","CC",113,5,0.00192318040165108,1
+"GO:0005736","DNA-directed RNA polymerase I complex","CC",13,2,0.00218423207088199,1
+"GO:0034062","RNA polymerase activity","MF",41,3,0.00222744655114714,1
+"GO:0061298","retina vasculature development in camera-type eye","BP",15,3,0.00240777720029874,1
+"GO:1900042","positive regulation of interleukin-2 secretion","BP",4,2,0.00246304862670807,1
+"GO:0035426","extracellular matrix-cell signaling","BP",4,2,0.00268693780881002,1
+"GO:0030032","lamellipodium assembly","BP",52,5,0.0033215703770631,1
+"GO:0040029","regulation of gene expression, epigenetic","BP",233,8,0.00361897304208419,1
+"GO:0072223","metanephric glomerular mesangium development","BP",5,2,0.00412346018240459,1
+"GO:0001736","establishment of planar polarity","BP",114,6,0.00426002287983471,1
+"GO:0007164","establishment of tissue polarity","BP",114,6,0.00426002287983471,1
+"GO:0061304","retinal blood vessel morphogenesis","BP",4,2,0.00429887091003488,1
+"GO:0044087","regulation of cellular component biogenesis","BP",719,20,0.00465658963265381,1
+"GO:0038184","cell surface bile acid receptor signaling pathway","BP",1,1,0.00521447122409542,1
+"GO:0038182","G-protein coupled bile acid receptor activity","MF",1,1,0.00521447122409542,1
+"GO:0008768","UDP-sugar diphosphatase activity","MF",1,1,0.00530267316298095,1
