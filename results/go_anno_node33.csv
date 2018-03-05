@@ -1,0 +1,31 @@
+"","Term","Ont","N","DE","P.DE","FDR"
+"GO:0000981","RNA polymerase II transcription factor activity, sequence-specific DNA binding","MF",610,16,1.40959718095419e-06,0.0121044347864182
+"GO:0000982","transcription factor activity, RNA polymerase II core promoter proximal region sequence-specific binding","MF",325,12,1.81006110711689e-06,0.0121044347864182
+"GO:0003700","transcription factor activity, sequence-specific DNA binding","MF",1123,20,2.27177124389251e-06,0.0121044347864182
+"GO:0001071","nucleic acid binding transcription factor activity","MF",1124,20,2.30890506178698e-06,0.0121044347864182
+"GO:0003677","DNA binding","MF",2292,26,6.32208473906926e-06,0.0265148233956565
+"GO:0044212","transcription regulatory region DNA binding","MF",780,16,1.05283447052136e-05,0.0283010000919121
+"GO:0000975","regulatory region DNA binding","MF",783,16,1.12349251739196e-05,0.0283010000919121
+"GO:0001067","regulatory region nucleic acid binding","MF",784,16,1.15611601491721e-05,0.0283010000919121
+"GO:0003676","nucleic acid binding","MF",3638,31,1.33836337876283e-05,0.0283010000919121
+"GO:0043565","sequence-specific DNA binding","MF",984,18,1.34959466341975e-05,0.0283010000919121
+"GO:0000987","core promoter proximal region sequence-specific DNA binding","MF",347,10,3.12282186188912e-05,0.059532340403468
+"GO:0001159","core promoter proximal region DNA binding","MF",350,10,3.54592007202133e-05,0.0619649532585728
+"GO:0006807","nitrogen compound metabolic process","BP",6290,43,8.11552715191627e-05,0.130909695673603
+"GO:1901363","heterocyclic compound binding","MF",5358,39,0.000108719888669648,0.155095992146563
+"GO:0000978","RNA polymerase II core promoter proximal region sequence-specific DNA binding","MF",330,9,0.000110941339160632,0.155095992146563
+"GO:0001077","transcriptional activator activity, RNA polymerase II core promoter proximal region sequence-specific binding","MF",221,8,0.000127978701417439,0.167732085545231
+"GO:0034641","cellular nitrogen compound metabolic process","BP",5870,40,0.000157142296048092,0.177858104724824
+"GO:0097159","organic cyclic compound binding","MF",5435,39,0.000160016023283505,0.177858104724824
+"GO:0019219","regulation of nucleobase-containing compound metabolic process","BP",3711,32,0.000171365533421041,0.177858104724824
+"GO:0045934","negative regulation of nucleobase-containing compound metabolic process","BP",1225,17,0.000172416885099845,0.177858104724824
+"GO:0007389","pattern specification process","BP",419,11,0.000183755465994633,0.177858104724824
+"GO:0000122","negative regulation of transcription from RNA polymerase II promoter","BP",684,13,0.000186594101284985,0.177858104724824
+"GO:0007399","nervous system development","BP",1994,26,0.000210039448309446,0.191501183958656
+"GO:0051171","regulation of nitrogen compound metabolic process","BP",3993,33,0.00022897941083922,0.195188964681024
+"GO:0001228","transcriptional activator activity, RNA polymerase II transcription regulatory region sequence-specific binding","MF",308,9,0.00023270024401648,0.195188964681024
+"GO:0046483","heterocycle metabolic process","BP",5352,37,0.000335348475250393,0.270471443307721
+"GO:0045892","negative regulation of transcription, DNA-templated","BP",1010,15,0.000355210137211463,0.271361713151999
+"GO:1901360","organic cyclic compound metabolic process","BP",5573,38,0.000362333236445206,0.271361713151999
+"GO:0048468","cell development","BP",1745,23,0.000416519601847212,0.295414312560851
+"GO:0006725","cellular aromatic compound metabolic process","BP",5398,37,0.000432923231068263,0.295414312560851

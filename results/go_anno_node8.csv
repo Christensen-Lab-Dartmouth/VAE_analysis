@@ -1,0 +1,31 @@
+"","Term","Ont","N","DE","P.DE","FDR"
+"GO:0030917","midbrain-hindbrain boundary development","BP",9,3,0.000266507547474455,1
+"GO:0071657","positive regulation of granulocyte colony-stimulating factor production","BP",2,2,0.000369999878751426,1
+"GO:1901258","positive regulation of macrophage colony-stimulating factor production","BP",2,2,0.000369999878751426,1
+"GO:0071611","granulocyte colony-stimulating factor production","BP",3,2,0.000537128211245677,1
+"GO:0071655","regulation of granulocyte colony-stimulating factor production","BP",3,2,0.000537128211245677,1
+"GO:0021903","rostrocaudal neural tube patterning","BP",11,3,0.000597874045972476,1
+"GO:0021555","midbrain-hindbrain boundary morphogenesis","BP",4,2,0.000739580709384045,1
+"GO:0004362","glutathione-disulfide reductase activity","MF",1,1,0.000838815126443881,1
+"GO:0051094","positive regulation of developmental process","BP",1098,24,0.000884289812920657,1
+"GO:0004648","O-phospho-L-serine:2-oxoglutarate aminotransferase activity","MF",1,1,0.00118796185605219,1
+"GO:0030204","chondroitin sulfate metabolic process","BP",38,4,0.00136735775301796,1
+"GO:0050654","chondroitin sulfate proteoglycan metabolic process","BP",40,4,0.00144195549042446,1
+"GO:0045766","positive regulation of angiogenesis","BP",116,6,0.00159503462222465,1
+"GO:0036301","macrophage colony-stimulating factor production","BP",4,2,0.00160414269711415,1
+"GO:1901256","regulation of macrophage colony-stimulating factor production","BP",4,2,0.00160414269711415,1
+"GO:0071453","cellular response to oxygen levels","BP",142,6,0.00177019016211257,1
+"GO:0035115","embryonic forelimb morphogenesis","BP",32,4,0.00195572000289684,1
+"GO:0045600","positive regulation of fat cell differentiation","BP",52,4,0.00199772926904789,1
+"GO:0090050","positive regulation of cell migration involved in sprouting angiogenesis","BP",6,2,0.00201432397465788,1
+"GO:0008615","pyridoxine biosynthetic process","BP",2,1,0.00211058326960318,1
+"GO:0008614","pyridoxine metabolic process","BP",2,1,0.00211058326960318,1
+"GO:0042819","vitamin B6 biosynthetic process","BP",2,1,0.00211058326960318,1
+"GO:0016012","sarcoglycan complex","CC",6,2,0.00288391335145816,1
+"GO:1904018","positive regulation of vasculature development","BP",132,6,0.00309046703326858,1
+"GO:0016011","dystroglycan complex","CC",7,2,0.00309093087200324,1
+"GO:1903322","positive regulation of protein modification by small protein conjugation or removal","BP",180,5,0.00327979844684733,1
+"GO:0006029","proteoglycan metabolic process","BP",80,5,0.00334411892558655,1
+"GO:0014033","neural crest cell differentiation","BP",75,5,0.00353714365977975,1
+"GO:1901381","positive regulation of potassium ion transmembrane transport","BP",24,3,0.00369942903021151,1
+"GO:0035136","forelimb morphogenesis","BP",39,4,0.00407841694279561,1

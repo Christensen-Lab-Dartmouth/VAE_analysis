@@ -61,8 +61,8 @@ vae = vae[, 1:ncol(vae)-1]
 vae_mat <- data.matrix(vae)
 
 ## M-values
-betas_dmgrM <- ifelse(vae_mat>=1, 1-1E-6, ifelse(vae_mat<=0, 1E-6, vae_mat))
-betas_dmgrM <- log(betas_dmgrM)-log(1-betas_dmgrM)
+betas_dmgrM = vae_mat # ifelse(vae_mat>=1, 1-1E-6, ifelse(vae_mat<=0, 1E-6, vae_mat))
+#betas_dmgrM <- log(betas_dmgrM)-log(1-betas_dmgrM)
 betas_dmgrM = t(betas_dmgrM)
 betas_dmgrM2 <- betas_dmgrM[, colnames(betas_dmgrM) %in% rownames(XX)]
 all(colnames(betas_dmgrM2) == rownames(XX))

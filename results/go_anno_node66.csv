@@ -1,0 +1,31 @@
+"","Term","Ont","N","DE","P.DE","FDR"
+"GO:0007608","sensory perception of smell","BP",345,12,1.68258384850041e-05,0.352837833030536
+"GO:0007606","sensory perception of chemical stimulus","BP",411,13,8.69441613232409e-05,0.806638641765619
+"GO:0030002","cellular anion homeostasis","BP",13,4,0.000115398947319831,0.806638641765619
+"GO:0090187","positive regulation of pancreatic juice secretion","BP",2,2,0.000175219625703035,0.915021362687787
+"GO:0050911","detection of chemical stimulus involved in sensory perception of smell","BP",321,9,0.000304669490228231,0.915021362687787
+"GO:0004984","olfactory receptor activity","MF",321,9,0.000304669490228231,0.915021362687787
+"GO:0050907","detection of chemical stimulus involved in sensory perception","BP",362,10,0.000308729535324991,0.915021362687787
+"GO:0030834","regulation of actin filament depolymerization","BP",48,6,0.000349078249952422,0.915021362687787
+"GO:0009593","detection of chemical stimulus","BP",397,11,0.0004722431289516,1
+"GO:0030042","actin filament depolymerization","BP",52,6,0.000583919725776089,1
+"GO:0055081","anion homeostasis","BP",18,4,0.000640828489888154,1
+"GO:1900040","regulation of interleukin-2 secretion","BP",8,3,0.00071637745571635,1
+"GO:0070970","interleukin-2 secretion","BP",10,3,0.000982223702077991,1
+"GO:0030835","negative regulation of actin filament depolymerization","BP",39,5,0.00100453656025041,1
+"GO:0006955","immune response","BP",1370,36,0.00110839128083599,1
+"GO:0016247","channel regulator activity","MF",123,9,0.0011960829281905,1
+"GO:0032437","cuticular plate","CC",3,2,0.00122009899480057,1
+"GO:0050906","detection of stimulus involved in sensory perception","BP",407,11,0.00127180423708556,1
+"GO:0008091","spectrin","CC",9,3,0.00156677414124594,1
+"GO:0046965","retinoid X receptor binding","MF",15,3,0.00189509488635783,1
+"GO:1901879","regulation of protein depolymerization","BP",65,6,0.00204232361012903,1
+"GO:0060671","epithelial cell differentiation involved in embryonic placenta development","BP",3,2,0.0022875321399566,1
+"GO:0060672","epithelial cell morphogenesis involved in placental branching","BP",3,2,0.0022875321399566,1
+"GO:0019482","beta-alanine metabolic process","BP",4,2,0.00228788439572223,1
+"GO:0060706","cell differentiation involved in embryonic placenta development","BP",26,4,0.00240627287280503,1
+"GO:0008064","regulation of actin polymerization or depolymerization","BP",155,9,0.00256089938686501,1
+"GO:0030832","regulation of actin filament length","BP",156,9,0.00271461529173434,1
+"GO:0004930","G-protein coupled receptor activity","MF",726,19,0.00278517659848826,1
+"GO:1900041","negative regulation of interleukin-2 secretion","BP",4,2,0.00298527261498668,1
+"GO:0038201","TOR complex","CC",14,3,0.0033305414639362,1

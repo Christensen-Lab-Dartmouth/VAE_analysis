@@ -56,8 +56,7 @@
 #####################
 # Correlations
 #####################  
-     nodes = c(1, 13, 16, 40, 42, 56, 58, 86, 93)
-     
+
      node_corrs = function(node, betas, vae) {
           vaeNode = vae[, as.character(node)]
           
@@ -80,13 +79,13 @@
           return(cor.sub)
      }
      
-     threshold = 0.3
+     threshold = 0.5
      
      correlations1 = node_corrs(1, betas, vae)
      correlations1 = subset_cors(threshold, correlations1)
      
-     correlations3 = node_corrs(3, betas, vae)
-     correlations3 = subset_cors(threshold, correlations3)
+     correlations8 = node_corrs(8, betas, vae)
+     correlations8 = subset_cors(threshold, correlations8)
      
      correlations13 = node_corrs(13, betas, vae)
      correlations13 = subset_cors(threshold, correlations13)
@@ -94,17 +93,32 @@
      correlations16 = node_corrs(16, betas, vae)
      correlations16 = subset_cors(threshold, correlations16)
      
+     correlations33 = node_corrs(33, betas, vae)
+     correlations33 = subset_cors(threshold, correlations33)
+     
      correlations40 = node_corrs(40, betas, vae)
      correlations40 = subset_cors(threshold, correlations40)
      
-     correlations42 = node_corrs(42, betas, vae)
-     correlations42 = subset_cors(threshold, correlations42)
+     correlations48 = node_corrs(48, betas, vae)
+     correlations48 = subset_cors(threshold, correlations48)
+     
+     correlations49 = node_corrs(49, betas, vae)
+     correlations49 = subset_cors(threshold, correlations49)
+     
+     correlations55 = node_corrs(55, betas, vae)
+     correlations55 = subset_cors(threshold, correlations55)
      
      correlations56 = node_corrs(56, betas, vae)
      correlations56 = subset_cors(threshold, correlations56)
      
      correlations58 = node_corrs(58, betas, vae)
      correlations58 = subset_cors(threshold, correlations58)
+     
+     correlations66 = node_corrs(66, betas, vae)
+     correlations66 = subset_cors(threshold, correlations66)
+     
+     correlations68 = node_corrs(68, betas, vae)
+     correlations68 = subset_cors(threshold, correlations68)
      
      correlations86 = node_corrs(86, betas, vae)
      correlations86 = subset_cors(threshold, correlations86)
@@ -119,26 +133,33 @@
      plot_corr_elbow = function(correlationsN, node, threshold, plot_line = F, line = NA){
           ## Correlation elbow
           cors = correlationsN$correlations
-          file.name = paste('results/correlation_elbow_node', node, '.png', sep = '')
+          file.name = paste('correlation_elbow_node', node, '.png', sep = '')
           
           png(file.name, width = 1000, height = 1000, res = 100)
           plot(abs(cors), main=paste('Node ', node, sep = ''), 
-               ylab = '|Correlation|', xlab='Index', ylim = c(threshold, 1.0))
+               ylab = '|Correlation|', xlab='Index', ylim = c(threshold, 0.9))
           if(plot_line == T){
-               abline(line, 0)     
+               abline(h = line)   
+               abline(v = 1000, col = "black")
+               abline(v = 5000, col = "green")
           }
           dev.off()
      }
      
      plot_corr_elbow(correlations1, 1, threshold, plot_line = T, line = 0.75)
-     plot_corr_elbow(correlations3, 3, threshold, plot_line = T, line = 0.65)
+     plot_corr_elbow(correlations8, 8, threshold, plot_line = T, line = 0.62)
      plot_corr_elbow(correlations13, 13, threshold, plot_line = T, line = 0.65)
      plot_corr_elbow(correlations16, 16, threshold, plot_line = T, line = 0.75)
+     plot_corr_elbow(correlations33, 33, threshold, plot_line = T, line = 0.6)
      plot_corr_elbow(correlations40, 40, threshold, plot_line = T, line = 0.7)
-     plot_corr_elbow(correlations42, 42, threshold, plot_line = T, line = 0.55)
+     plot_corr_elbow(correlations48, 48, threshold, plot_line = T, line = 0.72)
+     plot_corr_elbow(correlations49, 49, threshold, plot_line = T, line = 0.8)
+     plot_corr_elbow(correlations55, 55, threshold, plot_line = T, line = 0.63)
      plot_corr_elbow(correlations56, 56, threshold, plot_line = T, line = 0.75)
      plot_corr_elbow(correlations58, 58, threshold, plot_line = T, line = 0.8)
-     plot_corr_elbow(correlations86, 86, threshold, plot_line = T, line = 0.75)
+     plot_corr_elbow(correlations66, 66, threshold, plot_line = T, line = 0.65)
+     plot_corr_elbow(correlations68, 68, threshold, plot_line = T, line = 0.57)
+     plot_corr_elbow(correlations86, 86, threshold, plot_line = T, line = 0.77)
      plot_corr_elbow(correlations93, 93, threshold, plot_line = T, line = 0.6)
      
      
@@ -229,8 +250,6 @@
      require(minfi)
      library(IlluminaHumanMethylation450kanno.ilmn12.hg19)
      
-     threshold = 0.55
-     node = '93'
      ann450k = getAnnotation(IlluminaHumanMethylation450kanno.ilmn12.hg19)
      head(ann450k)
      
@@ -252,14 +271,14 @@
           anno.sub = data.frame(anno.sub)
           anno.sub = cbind('NodeCor' = cor.sub$correlations, anno.sub)
           
-          file.name = paste('results/anno450K_node', node, '.csv', sep = '')
+          file.name = paste('anno450K_node', node, '.csv', sep = '')
           write.csv(anno.sub, file.name)     
           
           
           ## GSA & GO analysis
           # load Broad human curated (C2) gene sets
           # http://bioinf.wehi.edu.au/software/MSigDB/
-          load('human_c2_v5p2.rdata')
+          load('../human_c2_v5p2.rdata')
           
           # analysis
           par(mfrow=c(1,1))
@@ -274,24 +293,28 @@
           # Top 10 gene sets
           gsa = topGSA(gsa, number=20)
           
-          gofile.name = paste('results/go_anno_node', node, '.csv', sep = '')
+          gofile.name = paste('go_anno_node', node, '.csv', sep = '')
           write.csv(go, gofile.name) 
           
-          gsafile.name = paste('results/gsa_anno_node', node, '.csv', sep = '')
+          gsafile.name = paste('gsa_anno_node', node, '.csv', sep = '')
           write.csv(gsa, gsafile.name) 
      }
 
      go_pathway_analysis(correlations1, 1, threshold = 0.75, ann450k)
-     go_pathway_analysis(correlations3, 3, threshold = 0.65, ann450k)
+     go_pathway_analysis(correlations8, 8, threshold = 0.62, ann450k)
      go_pathway_analysis(correlations13, 13, threshold = 0.65, ann450k)
      go_pathway_analysis(correlations16, 16, threshold = 0.75, ann450k)
+     go_pathway_analysis(correlations33, 33, threshold = 0.6, ann450k)
      go_pathway_analysis(correlations40, 40, threshold = 0.7, ann450k)
-     go_pathway_analysis(correlations42, 42, threshold = 0.55, ann450k)
+     go_pathway_analysis(correlations48, 48, threshold = 0.72, ann450k)
+     go_pathway_analysis(correlations49, 49, threshold = 0.8, ann450k)
+     go_pathway_analysis(correlations55, 55, threshold = 0.63, ann450k)
      go_pathway_analysis(correlations56, 56, threshold = 0.75, ann450k)
      go_pathway_analysis(correlations58, 58, threshold = 0.8, ann450k)
-     go_pathway_analysis(correlations86, 86, threshold = 0.75, ann450k)
+     go_pathway_analysis(correlations66, 66, threshold = 0.65, ann450k)
+     go_pathway_analysis(correlations68, 68, threshold = 0.57, ann450k)
+     go_pathway_analysis(correlations86, 86, threshold = 0.77, ann450k)
      go_pathway_analysis(correlations93, 93, threshold = 0.6, ann450k)
-     
          
      
 #####################
@@ -367,15 +390,16 @@
     
      
 
-     correlations_list = list(correlations1, correlations3, 
-                              correlations13, correlations16,
-                              correlations40, correlations42,
-                              correlations56, correlations58,
-                              correlations86, correlations93)
+     correlations_list = list(correlations1, correlations8, correlations13, correlations16, 
+                              correlations33, correlations40, correlations48,
+                              correlations49, correlations55, correlations56, correlations58,
+                              correlations66, correlations68, correlations86, correlations93)
      
-     node_list = c(1, 3, 13, 16, 40, 42, 56, 58, 86, 93) 
+     node_list = c(1, 8, 13, 16, 33, 40, 48, 49, 55, 56, 58, 66, 68, 86, 93) 
      
      enhancer_results = enhancer_analysis(correlations_list, node_list, threshold, ann450k)
+     enhancer_results$Node = factor(enhancer_results$Node, 
+                                    levels = enhancer_results$Node[order(as.numeric(substr(enhancer_results$Node, 4, 100)))])
      View(enhancer_results)
      
      
@@ -439,10 +463,10 @@
           geom_errorbarh(height=.02) +
           ylab('Node') +
           geom_vline(xintercept=1, color='black', linetype='dashed') +
-          scale_x_continuous(limits=c(0,max(enhancer_results$Conf95high)), name='Odds ratio w/ 95% CI') +
+          scale_x_continuous(limits=c(0, max(enhancer_results$Conf95high)), name='Odds ratio w/ 95% CI') +
           ggtitle('OR for enhancer in each node set of CpGs') + theme_Publication()
      
-     png('results/OR_enhancer_by_node.png', width = 2000, height = 2000, res = 300)
+     png('OR_enhancer_by_node.png', width = 2000, height = 2500, res = 300)
      fp
      dev.off()
      
@@ -517,10 +541,11 @@
 # VAE activations
 #####################
      library(reshape)
-     vae.sub = vae[, c(1, 13, 16, 40, 42, 56, 58, 86, 93)]
+     vae.sub = vae[, c(1, 8, 13, 16, 33, 40, 48, 49, 55, 56, 58, 66, 68, 86, 93)  ]
      vae.sub$SubjectID = rownames(vae.sub)
      VAE.covs = merge(vae.sub, BRCA.covs, by.x = 'SubjectID', by.y = 'Basename')
-     temp = melt(VAE.covs[, c(1, 13, 16, 40, 42, 56, 58, 86, 93, 'sample.typeInt', "sample.type", "PAM50.RNAseq")], 
+     temp = melt(VAE.covs[, c(1, 8, 13, 16, 33, 40, 48, 49, 55, 56, 58, 66, 68, 86, 93, 
+                              'sample.typeInt', "sample.type", "PAM50.RNAseq")], 
                  id=c('sample.typeInt', 'sample.type', 'PAM50.RNAseq'))
      
      colnames(temp) = c('SampleTypeInt', 'SampleType', 'PAM50orNormal', 'Node', 'Activation')
@@ -529,18 +554,19 @@
      #install.packages('ggpubr')
      library(ggpubr)
      png('Node_activationsInt.png', width = 2000, height = 2000, res = 300)
-     my_comparisons <- list( c("1", "40"), c("40", "42"), c("42", "93"), 
-                             c("1", "42"), c("1", "93"))
-     ggboxplot(temp, x = "Node", y = "Activation", 
-               color = "SampleTypeInt") +  
-          stat_compare_means(label.y = 4)  
+     
+     ggplot(temp, aes(x = reorder(Node, Activation, FUN = median), y = Activation, fill = SampleTypeInt)) + 
+          geom_boxplot() + facet_grid(SampleTypeInt ~ .) + xlab("Node") + 
+          ylab("Latent node activation value")
+     
      dev.off()
      
      temp = temp[temp$PAM50 != '', ]
-     png('Node_activationsPAM50.png', width = 2000, height = 2000, res = 300)
-     ggboxplot(temp, x = "Node", y = "Activation", 
-               color = "PAM50orNormal") +  
-          stat_compare_means(label.y = 4)  
+     png('Node_activationsPAM50.png', width = 3000, height = 2000, res = 300)
+     ggplot(temp, aes(x = reorder(Node, Activation, FUN = median), y = Activation, fill = PAM50orNormal)) + 
+          geom_boxplot() + facet_grid(PAM50orNormal ~ .) + xlab("Node") + 
+          ylab("Latent node activation value")
+     
      dev.off()
    
      
@@ -558,8 +584,9 @@
      test <- temp[-trainingRows, ]
      
      train <- multinom(PAM50.RNAseq ~ `1` + `13` + `16` +  
-                                      `40` + `42` + `56` + `58` + 
-                                      `86` + `93`, data = training)
+                                      `40` + `49` + `55` + 
+                                      `56` + `58` + `66` + 
+                                      `68` + `86` + `93`, data = training)
      summary(train)
      z <- summary(train)$coefficients/summary(train)$standard.errors
      z
@@ -576,35 +603,4 @@
      mean(as.character(pred_class) == as.character(test$PAM50.RNAseq))
      
      
-     # 1 v Rest
-     #########################
-     # Split data
-     set.seed(1234)
-     train.prob = rbinom(nrow(temp), 1, 0.5)
-     temp$TranVtest = train.prob
-     
-     temp$BasalVother = ifelse(temp$PAM50.RNAseq == "Basal", 1, 0)
-     temp$NormalVother = ifelse(temp$PAM50.RNAseq == "Normal", 1, 0)
-     temp$Her2Vother = ifelse(temp$PAM50.RNAseq == "Her2", 1, 0)
-     temp$LumAVother = ifelse(temp$PAM50.RNAseq == "LumA", 1, 0)
-     temp$LumBVother = ifelse(temp$PAM50.RNAseq == "LumB", 1, 0)
-     temp$LumVother = ifelse(temp$PAM50.RNAseq == "LumA" | 
-                                  temp$PAM50.RNAseq == "LumB", 1, 0)
-     
-     #########################
-     # Build model - logistic regression "Classify as normal" - 3D
-     temp.data = temp[, c('NormalVother', "1", "40", "42", "93")]
-     
-     train.data = temp.data[train.prob == 1, ]
-     test.data = temp.data[train.prob == 0, ]
-     
-     model <- glm(factor(NormalVother) ~., family=binomial(link='logit'), data=train.data) 
-     summary(model)
-     
-     # Testing the model
-     fitted.results <- predict(model,newdata=test.data,type='response')
-     fitted.results <- ifelse(fitted.results > 0.5,1,0)
-     misClasificError <- mean(fitted.results != test.data$NormalVother)
-     normal3dAccuracy = 1-misClasificError
-     print(paste('Accuracy = ',normal3dAccuracy))
      

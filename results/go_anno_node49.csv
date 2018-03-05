@@ -1,0 +1,31 @@
+"","Term","Ont","N","DE","P.DE","FDR"
+"GO:0016528","sarcoplasm","CC",66,7,0.00212644647954249,1
+"GO:0086012","membrane depolarization during cardiac muscle cell action potential","BP",18,4,0.00233961109551883,1
+"GO:0031214","biomineral tissue development","BP",120,9,0.00241783732848862,1
+"GO:0045061","thymic T cell selection","BP",20,4,0.00251341653663263,1
+"GO:0010560","positive regulation of glycoprotein biosynthetic process","BP",16,3,0.00272124429492105,1
+"GO:0045058","T cell selection","BP",41,5,0.00347267081574136,1
+"GO:0045060","negative thymic T cell selection","BP",11,3,0.00364229037552303,1
+"GO:0008123","cholesterol 7-alpha-monooxygenase activity","MF",1,1,0.003730857911425,1
+"GO:0035641","locomotory exploration behavior","BP",11,3,0.00377511050855487,1
+"GO:2000369","regulation of clathrin-dependent endocytosis","BP",14,3,0.00389899770373465,1
+"GO:1900242","regulation of synaptic vesicle endocytosis","BP",4,2,0.00407477544562082,1
+"GO:0035639","purine ribonucleoside triphosphate binding","MF",1693,49,0.0041552660169832,1
+"GO:0005524","ATP binding","MF",1389,43,0.00415910142552673,1
+"GO:1903020","positive regulation of glycoprotein metabolic process","BP",18,3,0.00427043859386557,1
+"GO:0043383","negative T cell selection","BP",12,3,0.00427129552111664,1
+"GO:0032559","adenyl ribonucleotide binding","MF",1423,44,0.0043131352637498,1
+"GO:0016529","sarcoplasmic reticulum","CC",59,6,0.00433190617357818,1
+"GO:0019957","C-C chemokine binding","MF",7,2,0.00449159132773448,1
+"GO:0030554","adenyl nucleotide binding","MF",1433,44,0.00463093102842953,1
+"GO:0032550","purine ribonucleoside binding","MF",1702,49,0.00465519137389842,1
+"GO:0032555","purine ribonucleotide binding","MF",1734,50,0.00469214485916441,1
+"GO:0001883","purine nucleoside binding","MF",1705,49,0.00476019533455447,1
+"GO:0032549","ribonucleoside binding","MF",1705,49,0.00476207337833189,1
+"GO:0002184","cytoplasmic translational termination","BP",1,1,0.00484995973139572,1
+"GO:0018444","translation release factor complex","CC",1,1,0.00484995973139572,1
+"GO:0008865","fructokinase activity","MF",4,2,0.00491673591325476,1
+"GO:0019158","mannokinase activity","MF",4,2,0.00491673591325476,1
+"GO:0001882","nucleoside binding","MF",1711,49,0.00497985161474739,1
+"GO:0017076","purine nucleotide binding","MF",1746,50,0.00506589449880627,1
+"GO:0035373","chondroitin sulfate proteoglycan binding","MF",3,2,0.00510142762944065,1
