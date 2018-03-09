@@ -13,6 +13,7 @@ This is an outline of the project using VAE to analyze BRCA DNA methylation data
 1. EWAS
 1. LaEWAS
 1. Latent dimension correlations
+1. Known DMRs and where they are in nodes
 1. Genomic context
     1. Correlation of CpG with VAE dimensions
     1. GO & GSA analysis
@@ -27,6 +28,7 @@ This is an outline of the project using VAE to analyze BRCA DNA methylation data
 1. 300K CpG EWAS
 1. 100 node LaEWAS
 1. Latent dimension correlations
+1. Known DMRs and where they are in nodes
 1. Genomic context
     1. Correlation of CpG with VAE dimensions
     1. GO & GSA analysis
