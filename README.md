@@ -1,2 +1,10 @@
-# DNAm_data_generation
-Generating realistic DNA methylation microarray data samples
+# VAE analysis using DNA methylation
+This is an outline of the project using VAE to analyze BRCA DNA methylation data
+
+## Introduction
+
+## Methods
+
+## Results
+
+## Discussion
