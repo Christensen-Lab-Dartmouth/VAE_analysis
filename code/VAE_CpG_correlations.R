@@ -556,15 +556,16 @@
      png('Node_activationsInt.png', width = 2000, height = 2000, res = 300)
      
      ggplot(temp, aes(x = reorder(Node, Activation, FUN = median), y = Activation, fill = SampleTypeInt)) + 
-          geom_boxplot() + facet_grid(SampleTypeInt ~ .) + xlab("Node") + 
-          ylab("Latent node activation value")
+          geom_boxplot(width=0.5) + xlab("Node") + #facet_grid(SampleTypeInt ~ .) +
+          ylab("Latent node activation value") +
+          scale_x_discrete(limits=c(66, 55, 13, 40, 93)) 
      
      dev.off()
      
      temp = temp[temp$PAM50 != '', ]
      png('Node_activationsPAM50.png', width = 3000, height = 2000, res = 300)
      ggplot(temp, aes(x = reorder(Node, Activation, FUN = median), y = Activation, fill = PAM50orNormal)) + 
-          geom_boxplot() + facet_grid(PAM50orNormal ~ .) + xlab("Node") + 
+          geom_boxplot(alpha = 0.3, width=0.5) + xlab("Node") + #facet_grid(PAM50orNormal ~ .) +
           ylab("Latent node activation value")
      
      dev.off()
