@@ -27,6 +27,7 @@ This is an outline of the project using VAE to analyze BRCA DNA methylation data
 1. Subtype classification
 1. 300K CpG EWAS
 1. 100 node LaEWAS
+![Image of LaEWAS](results/Nodes_LaEWAS.png)
 1. Latent dimension correlations
 1. Known DMRs and where they are in nodes
 1. Genomic context
