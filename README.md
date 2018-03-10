@@ -12,3 +12,4 @@ In order to use this repository, you need to complete a few steps to ensure we a
 1. Train the VAE model - [2-Model_training.ipynb](2-Model_training.ipynb)
 1. Conducte t-SNE dimensionality reduction - [3-tSNE.ipynb](3-tSNE.ipynb)
 1. Visualize the t-SNE results - [4-data_visualization.ipynb](4-data_visualization.ipynb)
+1. More to come...
