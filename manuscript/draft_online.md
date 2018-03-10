@@ -32,6 +32,7 @@ This is an outline of the project using VAE to analyze BRCA DNA methylation data
 
 1. Latent dimension correlations
 ![Image of DimCorrs](../results/VAE_ChordPlot.png)
+
 1. Known DMRs and where they are in nodes
 1. Genomic context
     1. Correlation of CpG with VAE dimensions
