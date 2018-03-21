@@ -13,7 +13,7 @@ library(limma)
 library(qvalue)
 
 #dir = '/Users/alexandertitus/Documents/github/DNAm_data_generation/code'
-dir = 'C:/Users/atitus/Documents/github/DNAm_data_generation/results'
+dir = 'C:/Users/atitus/Documents/github/VAE_analysis/results'
 setwd(dir)
 
 

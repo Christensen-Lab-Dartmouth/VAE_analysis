@@ -15,7 +15,7 @@
 #####################
      #dir = '/Users/alexandertitus/Documents/github/DNAm_data_generation/code'
      
-     dir = 'C:/Users/atitus/Documents/github/DNAm_data_generation/results'
+     dir = 'C:/Users/atitus/Documents/github/VAE_analysis/results'
      BRCA.covFile = '../BRCAtarget_covariates.csv'
 
      setwd(dir)
@@ -24,7 +24,7 @@
      BRCA.covs$sample.typeInt = ifelse(BRCA.covs$sample.type == 'Solid Tissue Normal', 0, 1)
      BRCA.covs = BRCA.covs[!is.na(BRCA.covs$age.Dx), ]
      
-     dir = 'C:/Users/atitus/Documents/github/DNAm_data_generation'
+     dir = 'C:/Users/atitus/Documents/github/VAE_analysis'
      setwd(dir)
      
      ## Betas
@@ -60,7 +60,7 @@
      node_corrs = function(node, betas, vae) {
           vaeNode = vae[, as.character(node)]
           
-          cor.func = function(x){return(cor(x, vaeNode))}
+          cor.func = function(x){return(cor(x, vaeNode, method = 'spearman'))}
           
           correlations = apply(betas, 2, cor.func)
           correlations = data.frame(correlations)
@@ -541,7 +541,7 @@
 # VAE activations
 #####################
      library(reshape)
-     vae.sub = vae[, c(1, 8, 13, 16, 33, 40, 48, 49, 55, 56, 58, 66, 68, 86, 93)  ]
+     vae.sub = vae#[, c(1, 8, 13, 16, 33, 40, 48, 49, 55, 56, 58, 66, 68, 86, 93)  ]
      vae.sub$SubjectID = rownames(vae.sub)
      VAE.covs = merge(vae.sub, BRCA.covs, by.x = 'SubjectID', by.y = 'Basename')
      temp = melt(VAE.covs[, c(1, 8, 13, 16, 33, 40, 48, 49, 55, 56, 58, 66, 68, 86, 93, 
@@ -579,15 +579,26 @@
      library("nnet")
      
      set.seed(100)
-     temp = VAE.covs[VAE.covs$PAM50 != '', ]
+     temp = VAE.covs[VAE.covs$PAM50.RNAseq != '', ]
+     temp = temp[temp$sample.type != 'Metastatic', ]
+     
+     temp = temp[!(temp$PAM50.RNAseq == 'LumA' &
+                      temp$sample.type == 'Solid Tissue Normal'), ]
+     
+     temp = temp[!(temp$PAM50.RNAseq == 'Normal' &
+                        temp$sample.type == 'Primary Tumor'), ]
+     
+     
      trainingRows <- sample(1:nrow(temp), 0.7*nrow(temp))
      training <- temp[trainingRows, ]
      test <- temp[-trainingRows, ]
      
-     train <- multinom(PAM50.RNAseq ~ `1` + `13` + `16` +  
-                                      `40` + `49` + `55` + 
-                                      `56` + `58` + `66` + 
-                                      `68` + `86` + `93`, data = training)
+     
+     
+     train <- multinom(PAM50.RNAseq ~ `59` + `51` + `29` +
+                                      `60` + `27` + `68` +
+                                      `62` + `5` + `87` + 
+                                      `60` + `95` + `15`, data = training)
      summary(train)
      z <- summary(train)$coefficients/summary(train)$standard.errors
      z
