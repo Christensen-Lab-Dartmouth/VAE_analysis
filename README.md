@@ -1,7 +1,12 @@
 # VAE analysis using DNA methylation
 
 ## NEED TO UPDATE ANALYSIS TO USE UMAP INSTEAD OF t-tSNE
-(UMAP Repo)[https://github.com/lmcinnes/umap], (UMAP Paper)[https://arxiv.org/abs/1802.03426]
+[UMAP Repo](https://github.com/lmcinnes/umap), [UMAP Paper](https://arxiv.org/abs/1802.03426)
+
+Need to create a "data" folder with data for analysis before beginning.
+
+The current reference to "data" folder can be replaced with the "test_data" folder for a quick proof of principle to get the repository running.
+
 
 ## How to use this repository
 In order to use this repository, you need to complete a few steps to ensure we are keeping the code clean.
