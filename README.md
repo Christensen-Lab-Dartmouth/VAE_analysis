@@ -1,6 +1,6 @@
 # VAE analysis using DNA methylation
 
-## NEED TO UPDATE ANALYSIS TO USE UMAP INSTEAD OF t-tSNE
+## NEED TO UPDATE ANALYSIS TO USE UMAP INSTEAD OF t-SNE
 [UMAP Repo](https://github.com/lmcinnes/umap), [UMAP Paper](https://arxiv.org/abs/1802.03426)
 
 Need to create a "data" folder with data for analysis before beginning.
