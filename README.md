@@ -1,4 +1,5 @@
 # VAE analysis using DNA methylation
+This repository is adapted from the [Tybalt](https://github.com/greenelab/tybalt) repository developed by Way et al. This repository is a fork of the previously mentioned repo, but due to a technical error, it was uploaded to GitHub independently. Some of the description below is addapted from the original Way et al. repo. 
 
 ## NEED TO UPDATE ANALYSIS TO USE UMAP INSTEAD OF t-SNE
 [UMAP Repo](https://github.com/lmcinnes/umap), [UMAP Paper](https://arxiv.org/abs/1802.03426)
